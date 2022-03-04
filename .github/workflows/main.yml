@@ -1,0 +1,23 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  # test:
+  
+  deploy:
+    # needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Deploying to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key:  ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "simple-python-api"
+          heroku_email: "aluisio18lucio@gmail.com"
+          rollbackonhealthcheckfailed: true
