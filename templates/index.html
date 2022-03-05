@@ -5,7 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teste app deploy Heroku</title>
 </head>
-<body style="background-color: darkorange;">
-    <h1>{{ text }}</h1>
-</body>
+    <body style="background-color: darkorange;">
+        <form action="/people" method="POST">
+            <label for="name"><b>Name</b></label>
+            <input name="name" type="text" required>
+
+            <br><br>
+            <label for="age"><b>Age</b></label>
+            <input name="age" type="number" required>
+
+            <br><br>
+            <label for="birthday"><b>birthday</b></label>
+            <input name="birthday" type="date" required>
+
+            <br><br>
+            <input name="submit" type="submit" value="Add person">         
+        </form>
+
+        <h1>People</h1>
+        <ul>
+            {% for person in people %}
+                <li><b>Name: {{ person.name }} - Age: {{ person.age }} - Birthday: {{ person.birthday }}</b></li>
+            {% endfor %}
+        </ul>
+    </body>
 </html>
