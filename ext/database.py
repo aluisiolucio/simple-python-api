@@ -16,8 +16,9 @@ def connection():
     user = os.getenv('DB_USERNAME')
     db_name = os.getenv('DB_NAME')
 
-    DATABASE_URI = f"postgresql://{user}:{password}@{host_port}/{db_name}"
-    engine = create_engine(os.getenv('DATABASE_URL'), echo=False)
+    # DATABASE_URI = f"postgresql://{user}:{password}@{host_port}/{db_name}"
+    DATABASE_URI = f"postgresql://{os.getenv('DATABASE_URL')}"
+    engine = create_engine(DATABASE_URI, echo=False)
 
     SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
